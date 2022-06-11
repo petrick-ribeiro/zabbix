@@ -1,0 +1,3 @@
+---
+- import_tasks: common_pkgs.yaml
+- import_tasks: zabbix_install.yaml

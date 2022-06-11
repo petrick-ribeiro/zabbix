@@ -1,0 +1,97 @@
+---
+
+# Zabbix
+- name: Install and configure Zabbix 
+  block:
+    - name: Zabbix deps
+      yum:
+        state: lastest
+        name: '{{ zabbix_pkgs }}'
+
+    - name: Restart MariaDB
+      systemd:
+        name: mariadb
+        state: restarted
+
+    - name: Enable MariaDB
+      systemd:
+        name: mariadb
+        state: enabled
+
+    - name: Enable Zabbix repo
+      command: '{{ zabbix_repo_cmd }}'
+
+    - name: Install Zabbix server | agent | frontend 
+      yum:
+        state: present
+        name: '{{ zabbix_install_pkgs }}'
+
+    - name: Enable zabbix-frontend repo
+      replace:
+        path: '{{ zabbix_repo_path }}'
+        after: '[zabbix-frontend]'
+        before: '[zabbix-debuginfo]'
+        regex: 'enabled=0'
+        replace: 'enabled=1'
+
+    - name: Install Zabbix frontend
+      yum:
+        state: latest
+        name: '{{ zabbix_frontend_pkgs }}'
+  become: true
+
+# MariaDB
+- name: Configure MariaDB for Zabbix server
+  block:
+    - name: Create zabbix database
+      mysql_db:
+        state: present
+        encoding: utf8
+        collation: utf8_bin
+        name: zabbix
+
+    - name: Create zabbix user
+      mysql_user:
+        state: present
+        priv: '*.*:ALL'
+        name: '{{ zabbix_db_user }}'
+        password: '{{ zabbix_db_pass }}' # Refatorar criando uma var :B
+
+    - name: Import initial schema and data
+      command: '{{ import_schema_cmd }}'
+      argv: '{{ zabbix_db_pass }}'
+
+    - name: Configure database for zabbix server
+      replace:
+        path: '{{ zabbix_server_path }}'
+        after: "DBUser=zabbix"
+        before: "DBPassword=zabbix"
+        regex: "#DBPassword=zabbix"
+        replace: "DBPassword=zabbix"
+  become: true
+
+# PHP
+- name: Configure PHP for Zabbix frontend
+  block:
+    - name: Edit timezone
+      replace:
+        path: '{{ zabbix_php_path }}'
+        after: "php_value[max_input_vars] = 10000"
+        regex: ";php_value[date.timezone] = Europe/Riga"
+        replace: "php_value[date.timezone] = America/Sao_Paulo"
+  become: true
+
+- name: Post-Installation
+  block:
+    - name: Restart Zabbix processes
+      systemd:
+        name: '{{ zabbix_services }}'
+        state: restarted
+          
+    - name: Enable Zabbix processes
+      systemd:
+        name: '{{ zabbix_services }}'
+        state: enabled
+  become: true
+  debug: 
+    msg: "É mole?"
