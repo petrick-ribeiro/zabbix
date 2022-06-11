@@ -11,7 +11,7 @@ common_pkgs:
       - htop
       - rpm
 zabbix_pkgs:
-  - http
+  - httpd
   - mariadb
   - mariadb-server
 zabbix_frontend_pkgs:
