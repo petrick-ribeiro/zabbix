@@ -1,7 +1,12 @@
 ---
 
-- name: Provisioning Zabbix
-  hosts: all
+- name: Provisioning Zabbix locally
+  hosts:
+    localhost:
+      vars:
+        ansible_connection: local
+        ansible_interpreter: '{{ ansible_interpreter_python}}'
+
   gather_facts: false
   roles:
       - dependencies
