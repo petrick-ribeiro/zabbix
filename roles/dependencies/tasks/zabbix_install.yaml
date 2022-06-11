@@ -86,7 +86,6 @@
     systemd:
       name: '{{ zabbix_services }}'
       state: enabled
-    msg: "É mole?!"
   become: true
 
 
