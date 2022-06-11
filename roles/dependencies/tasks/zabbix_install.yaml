@@ -58,9 +58,9 @@
         password: '{{ zabbix_db_pass }}' 
 
     - name: Import initial schema and data
-      command: '{{ import_schema_cmd }}'
-      argv: 
-        - '{{ zabbix_db_pass }}'
+      command: 
+        cmd: '{{ import_schema_cmd }}'
+        argv: '{{ zabbix_db_pass }}'
 
     - name: Configure database for zabbix server
       replace:
