@@ -76,6 +76,7 @@
   become: true
 
 - name: Post-Installation
+  msg: "Quase lá..."
   notify:
     - Restart Zabbix processes
     - Enable Zabbix processes
