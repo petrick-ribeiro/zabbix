@@ -12,3 +12,6 @@
     state: enabled
     name: mariadb
 
+- name: Yum clean all
+  become: true
+  command: Clear all cached info 
