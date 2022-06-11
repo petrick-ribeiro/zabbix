@@ -5,9 +5,7 @@
     localhost:
       vars:
         ansible_connection: local
-        ansible_interpreter: '{{ ansible_interpreter_python}}'
-
-  gather_facts: false
+        ansible_python_interpreter: "{{ansible_playbook_python}}"
   roles:
       - dependencies
 
