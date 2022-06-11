@@ -55,10 +55,10 @@
         state: present
         priv: '*.*:ALL'
         name: '{{ zabbix_db_user }}'
-        password: '{{ zabbix_db_pass }}' # Refatorar criando uma var :B
+        password: '{{ zabbix_db_pass }}' 
 
     - name: Import initial schema and data
-      command: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+      command: '{{ import_schema_cmd }}'
       argv: 
         - '{{ zabbix_db_pass }}'
 
