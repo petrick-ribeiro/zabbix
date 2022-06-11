@@ -1,0 +1,25 @@
+---
+
+- name: Restart MariaDB
+  become: true
+  systemd:
+    state: restarted
+    name: mariadb
+
+- name: Enable MariaDB
+  become: true
+  systemd:
+    state: enabled
+    name: mariadb
+
+- name: Restart Zabbix processes
+  become: true
+  systemd:
+    name: '{{ zabbix_services }}'
+    state: restarted
+
+- name: Enable Zabbix processes
+  become: true
+  systemd:
+    name: '{{ zabbix_services }}'
+    state: enabled

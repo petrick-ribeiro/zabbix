@@ -7,16 +7,9 @@
       yum:
         state: latest
         name: '{{ zabbix_pkgs }}'
-
-    - name: Restart MariaDB
-      systemd:
-        name: mariadb
-        state: restarted
-
-    - name: Enable MariaDB
-      systemd:
-        name: mariadb
-        state: enabled
+      notify:
+        - Restart MariaDB
+        - Enable MariaDB
 
     - name: Enable Zabbix repo
       command: '{{ zabbix_repo_cmd }}'
@@ -83,14 +76,9 @@
   become: true
 
 - name: Post-Installation
-  block:
-    - name: Restart Zabbix processes
-      systemd:
-        name: '{{ zabbix_services }}'
-        state: restarted
+  notify:
+    - Restart Zabbix processes
+    - Enable Zabbix processes
+
+
           
-    - name: Enable Zabbix processes
-      systemd:
-        name: '{{ zabbix_services }}'
-        state: enabled
-  become: true
