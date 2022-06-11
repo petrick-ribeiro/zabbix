@@ -58,7 +58,7 @@
         password: '{{ zabbix_db_pass }}' # Refatorar criando uma var :B
 
     - name: Import initial schema and data
-      command: '{{ import_schema_cmd }}'
+      command: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
       argv: 
         - '{{ zabbix_db_pass }}'
 
