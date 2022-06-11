@@ -1,7 +1,7 @@
 ---
 
 - name: Provisioning Zabbix
-  hosts: localhost
+  hosts: all
   gather_facts: false
   roles:
       - dependencies
