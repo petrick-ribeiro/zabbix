@@ -32,7 +32,7 @@
         path: '{{ zabbix_repo_path }}'
         after: '[zabbix-frontend]'
         before: '[zabbix-debuginfo]'
-        regex: 'enabled=0'
+        regexp: 'enabled=0'
         replace: 'enabled=1'
 
     - name: Install Zabbix frontend
