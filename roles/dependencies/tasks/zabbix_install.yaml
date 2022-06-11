@@ -76,10 +76,18 @@
   become: true
 
 - name: Post-Installation
+  block:
+  - name: Restart Zabbix processes
+    systemd:
+      name: '{{ zabbix_services }}'
+      state: restarted
+
+  - name: Enable Zabbix processes
+    systemd:
+      name: '{{ zabbix_services }}'
+      state: enabled
+  become: true
   msg: "Quase lá..."
-  notify:
-    - Restart Zabbix processes
-    - Enable Zabbix processes
 
 
           
