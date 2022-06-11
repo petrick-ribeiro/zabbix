@@ -5,7 +5,7 @@
   block:
     - name: Zabbix deps
       yum:
-        state: lastest
+        state: latest
         name: '{{ zabbix_pkgs }}'
 
     - name: Restart MariaDB
