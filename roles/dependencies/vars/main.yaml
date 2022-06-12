@@ -10,7 +10,7 @@ common_pkgs:
       - vim
       - htop
       - rpm
-zabbix_pkgs:
+zabbix_deps_pkgs:
   - httpd
   - mariadb
   - mariadb-server

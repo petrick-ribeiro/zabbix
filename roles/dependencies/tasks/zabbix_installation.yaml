@@ -5,7 +5,7 @@
   block:
     - name: Zabbix deps
       yum:
-        name: '{{ zabbix_pkgs }}'
+        name: '{{ zabbix_deps_pkgs }}'
         state: latest
 
     - name: Restart MariaDB
@@ -16,8 +16,7 @@
 
     - name: Enable Zabbix repo
       shell: '{{ zabbix_repo_cmd }}'
-      args:
-        warn: no
+      ignore_errors: true
       register: zabbix_repo_out
 
     - debug:
@@ -25,8 +24,7 @@
 
     - name: Clear All cached info
       shell: '{{ yum_clean_cache }}' 
-      args:
-        warn: no
+      ignore_errors: true
       register: yum_clean_cache_out
 
     - debug:
