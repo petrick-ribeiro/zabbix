@@ -15,20 +15,18 @@
         enabled: yes
 
     - name: Enable Zabbix repo
-      shell:
-        cmd: '{{ zabbix_repo_cmd }}'
-        args:
-          warn: no
+      shell: '{{ zabbix_repo_cmd }}'
+      args:
+        warn: false
       register: zabbix_repo_out
 
     - debug:
         var: zabbix_repo_out.stdout_lines
 
     - name: Clear All cached info
-      shell:
-        cmd: '{{ yum_clean_cache }}' 
-        args:
-          warn: no
+      shell: '{{ yum_clean_cache }}' 
+      args:
+        warn: false
       register: yum_clean_cache_out
 
     - debug:
