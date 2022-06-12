@@ -5,18 +5,14 @@
   block:
     - name: Zabbix deps
       yum:
-        state: latest
         name: '{{ zabbix_pkgs }}'
+        state: latest
 
     - name: Restart MariaDB
       systemd:
+        name: mariadb
         state: restarted
-        name: mariadb
-
-    - name: Enable MariaDB
-      systemd:
-        state: enabled
-        name: mariadb
+        enabled: yes
 
     - name: Enable Zabbix repo
       shell:
@@ -34,8 +30,8 @@
 
     - name: Install Zabbix server | agent | frontend 
       yum:
-        state: present
         name: '{{ zabbix_install_pkgs }}'
+        state: present
 
     - name: Clear all cached info
       become: true
@@ -52,8 +48,8 @@
 
     - name: Install Zabbix frontend
       yum:
-        state: latest
         name: '{{ zabbix_frontend_pkgs }}'
+        state: latest
   become: true
 
 # MariaDB
@@ -61,17 +57,17 @@
   block:
     - name: Create zabbix database
       mysql_db:
+        name: zabbix
         state: present
         encoding: utf8
         collation: utf8_bin
-        name: zabbix
 
     - name: Create zabbix user
       mysql_user:
-        state: present
-        priv: '*.*:ALL'
         name: '{{ zabbix_db_user }}'
         password: '{{ zabbix_db_pass }}' 
+        state: present
+        priv: '*.*:ALL'
 
     - name: Import initial schema and data
       shell:
@@ -104,12 +100,6 @@
     systemd:
       name: '{{ zabbix_services }}'
       state: restarted
-
-  - name: Enable Zabbix processes
-    systemd:
-      name: '{{ zabbix_services }}'
-      state: enabled
+      enabled: yes
   become: true
 
-
-          
