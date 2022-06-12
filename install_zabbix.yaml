@@ -1,7 +1,7 @@
 ---
 
 - name: Provisioning Zabbix locally
-  hosts: all
+  hosts: local
   roles:
       - dependencies
 
