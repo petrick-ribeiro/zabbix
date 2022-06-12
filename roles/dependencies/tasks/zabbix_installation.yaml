@@ -17,11 +17,11 @@
     - name: Enable Zabbix repo
       shell:
         cmd: '{{ zabbix_repo_cmd }}'
-        warn: no
       register: zabbix_repo_out
+      failed_when: /etc/yum.repos.d/zabbix.repo.exists == false
 
     - debug:
-        var: zabbix_repo_output.stdout_lines
+        var: zabbix_repo_out.stdout_lines
 
     - name: Clear All cached info
       shell:
