@@ -17,8 +17,8 @@
     - name: Enable Zabbix repo
       shell:
         cmd: '{{ zabbix_repo_cmd }}'
-        register: zabbix_repo_out
-        warn: no
+      register: zabbix_repo_out
+      warn: no
 
     - debug:
         var: zabbix_repo_output.stdout_lines
@@ -26,8 +26,8 @@
     - name: Clear All cached info
       shell:
         cmd: '{{ yum_clean_cache }}' 
-        register: yum_clean_cache_out
-        warn: no
+      register: yum_clean_cache_out
+      warn: no
 
     - debug:
         var: yum_clean_cache_out.stdout_lines
