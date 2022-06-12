@@ -20,7 +20,6 @@
         args:
           warn: no
       register: zabbix_repo_out
-      failed_when: /etc/yum.repos.d/zabbix.repo.exists == false
 
     - debug:
         var: zabbix_repo_out.stdout_lines
