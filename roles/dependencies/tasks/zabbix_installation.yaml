@@ -17,6 +17,8 @@
     - name: Enable Zabbix repo
       shell:
         cmd: '{{ zabbix_repo_cmd }}'
+        args:
+          warn: no
       register: zabbix_repo_out
       failed_when: /etc/yum.repos.d/zabbix.repo.exists == false
 
@@ -26,7 +28,8 @@
     - name: Clear All cached info
       shell:
         cmd: '{{ yum_clean_cache }}' 
-        warn: no
+        args:
+          warn: no
       register: yum_clean_cache_out
 
     - debug:
