@@ -21,10 +21,12 @@
         name: mariadb
 
     - name: Enable Zabbix repo
-      command: '{{ zabbix_repo_cmd }}'
+      shell: 
+        cmd: '{{ zabbix_repo_cmd }}'
 
     - name: Clear All cached info
-      command: '{{ yum_clean_cache }}' 
+      shell: 
+        cmd: '{{ yum_clean_cache }}' 
 
     # - name: Enable Zabbix repo
     #   yum_repository:
@@ -39,7 +41,8 @@
 
     - name: Clear all cached info
       become: true
-      command: yum clean all
+      shell: 
+        cmd: yum clean all
 
     - name: Enable zabbix-frontend repo
       replace:
@@ -73,7 +76,7 @@
         password: '{{ zabbix_db_pass }}' 
 
     - name: Import initial schema and data
-      command: 
+      shell: 
         cmd: '{{ import_schema_cmd }}'
         argv: '{{ zabbix_db_pass }}'
 
