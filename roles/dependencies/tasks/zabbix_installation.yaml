@@ -85,8 +85,9 @@
     - name: Import initial schema and data
       expect:
         command: '{{ import_schema_cmd }}'
-        responses: '{{ zabbix_db_pass }}'
-      no_log: true
+        responses: 
+          password: zabbix_db_pass }}')
+
 
     - name: Configure database for zabbix server
       replace:
