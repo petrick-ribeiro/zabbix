@@ -83,9 +83,8 @@
         priv: '*.*:ALL'
 
     - name: Import initial schema and data
-      shell:
-        cmd: '{{ import_schema_cmd }}'
-        argv: '{{ zabbix_db_pass }}'
+      shell: '{{ import_schema_cmd }}'
+      argv: '{{ zabbix_db_pass }}'
 
     - name: Configure database for zabbix server
       replace:
