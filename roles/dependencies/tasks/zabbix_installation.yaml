@@ -86,8 +86,7 @@
       expect:
         command: '{{ import_schema_cmd }}'
         responses: 
-          password: zabbix_db_pass }}')
-
+          'password': '{{ zabbix_db_pass }}'
 
     - name: Configure database for zabbix server
       replace:

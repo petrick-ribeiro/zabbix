@@ -16,6 +16,7 @@ zabbix_deps_pkgs:
   - mariadb-server
   - python2
   - python2-PyMySQL
+  - python2-pip
 zabbix_frontend_pkgs:
   - zabbix-web-mysql-scl
   - zabbix-apache-conf-scl
