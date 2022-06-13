@@ -16,6 +16,8 @@
 
     - name: Enable Zabbix repo
       shell: '{{ zabbix_repo_cmd }}'
+      args:
+        warn: false
       ignore_errors: true
       register: zabbix_repo_out
 
@@ -24,6 +26,8 @@
 
     - name: Clear All cached info
       shell: '{{ yum_clean_cache }}' 
+      args:
+        warn: false
       ignore_errors: true
       register: yum_clean_cache_out
 
@@ -41,18 +45,19 @@
         name: '{{ zabbix_install_pkgs }}'
         state: present
 
-    - name: Clear all cached info
-      become: true
-      shell:
-        cmd: yum clean all
-
     - name: Enable zabbix-frontend repo
-      replace:
-        path: '{{ zabbix_repo_path }}'
-        after: '[zabbix-frontend]'
-        before: '[zabbix-debuginfo]'
-        regexp: 'enabled=0'
-        replace: 'enabled=1'
+      template:
+        src: '{{ zabbix_repo_src_path }}'
+        dest: '{{ zabbix_repo_path }}'
+        owner: root
+
+    # - name: Enable zabbix-frontend repo
+    #   replace:
+    #     path: '{{ zabbix_repo_path }}'
+    #     after: "[zabbix-frontend]"
+    #     before: "[zabbix-debuginfo]"
+    #     regexp: "enabled=0"
+    #     replace: "enabled=1"
 
     - name: Install Zabbix frontend
       yum:
