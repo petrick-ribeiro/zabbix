@@ -96,6 +96,7 @@
         name: zabbix
         state: import
         target: '{{ zabbix_schema_path }}'
+      ignore_errors: true
       tags: schema
 
     - name: Configure database for zabbix server
