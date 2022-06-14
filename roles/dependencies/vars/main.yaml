@@ -38,9 +38,9 @@ zabbix_server_path: /etc/zabbix/zabbix_server.conf
 zabbix_php_path: /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
 
 # Services
-zabbix_services: 
-  - zabbix-server
-  - zabbix-agent
-  - httpd
-  - rh-php72-php-fpm
+# zabbix_services: 
+#   - zabbix-server
+#   - zabbix-agent
+#   - httpd
+#   - rh-php72-php-fpm
 

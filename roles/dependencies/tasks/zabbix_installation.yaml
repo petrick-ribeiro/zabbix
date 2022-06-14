@@ -121,9 +121,27 @@
 
 - name: Post-Installation
   block:
-  - name: Restart Zabbix processes
+  - name: Restart Apache
     systemd:
-      name: '{{ zabbix_services }}'
+      name: httpd
+      state: restarted
+      enabled: yes
+
+  - name: Restart zabbix-server 
+    systemd:
+      name: zabbix-server
+      state: restarted
+      enabled: yes
+
+  - name: Restart zabbix-agent
+    systemd:
+      name: zabbix-agent
+      state: restarted
+      enabled: yes
+
+  - name: Restart PHP
+    systemd:
+      name: rh-php72-php-fpm
       state: restarted
       enabled: yes
   become: true
