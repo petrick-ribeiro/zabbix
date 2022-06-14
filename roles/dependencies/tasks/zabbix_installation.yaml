@@ -115,7 +115,7 @@
       replace:
         path: '{{ zabbix_php_path }}'
         after: "php_value[max_input_vars] = 10000"
-        regex: ";php_value[date.timezone] = Europe/Riga"
+        regexp: ";php_value[date.timezone] = Europe/Riga"
         replace: "php_value[date.timezone] = America/Sao_Paulo"
   become: true
 
