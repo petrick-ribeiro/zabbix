@@ -95,8 +95,8 @@
       mysql_db:
         name: zabbix
         state: import
-        target: /usr/share/doc/zabbix-server-mysql*/create.sql.gz 
-      tags: schema
+        target: '{{ zabbix_schema_path: }}'
+        tags: schema
 
     - name: Configure database for zabbix server
       replace:
