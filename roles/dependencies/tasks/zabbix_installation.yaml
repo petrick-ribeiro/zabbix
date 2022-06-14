@@ -144,5 +144,8 @@
       name: rh-php72-php-fpm
       state: restarted
       enabled: yes
+
+  - name: Reboot...
+    reboot:
   become: true
 

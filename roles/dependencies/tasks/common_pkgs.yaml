@@ -11,7 +11,7 @@
       name: epel-release
       state: latest
 
-  - name: Install
+  - name: Install Common Pkgs
     yum:
       name: "{{ common_pkgs }}"
       state: latest
