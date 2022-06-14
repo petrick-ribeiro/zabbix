@@ -104,7 +104,7 @@
         path: '{{ zabbix_server_path }}'
         after: "DBUser=zabbix"
         before: "DBPassword=zabbix"
-        regex: "#DBPassword=zabbix"
+        regexp: "#DBPassword=zabbix"
         replace: "DBPassword=zabbix"
   become: true
 
