@@ -1,7 +1,7 @@
 # Zabbix
 Zabbix for CentOS/7 Provisioning
 
-##Pre-installation
+## Pre-installation
 - Disable Selinux
 - Ansible
 - ansible-galaxy community.mysql
