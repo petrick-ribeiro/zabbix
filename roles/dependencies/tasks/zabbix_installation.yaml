@@ -8,6 +8,10 @@
         name: '{{ zabbix_deps_pkgs }}'
         state: latest
 
+    - name: Install pexpect
+      pip:
+        name: pexpect
+
     - name: Restart MariaDB
       systemd:
         name: mariadb
@@ -86,7 +90,8 @@
       expect:
         command: '{{ import_schema_cmd }}'
         responses: 
-          'password': '{{ zabbix_db_pass }}'
+          password: '{{ zabbix_db_pass }}'
+      tags: schema
 
     - name: Configure database for zabbix server
       replace:
