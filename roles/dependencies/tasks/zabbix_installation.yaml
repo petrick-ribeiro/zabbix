@@ -95,7 +95,7 @@
       mysql_db:
         name: zabbix
         state: import
-        target: '{{ zabbix_schema_path: }}'
+        target: '{{ zabbix_schema_path }}'
       tags: schema
 
     - name: Configure database for zabbix server
