@@ -145,7 +145,7 @@
       state: restarted
       enabled: yes
 
-  - name: Reboot...
-    reboot:
+  - name: Rebooting...
+    shell: "sleep 5 && reboot"
   become: true
 
