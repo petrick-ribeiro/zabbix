@@ -1,5 +1,5 @@
 # Zabbix
-Ansible Provisioning Zabbix for CentOS/7 :rocket:	
+Ansible Provisioning **Zabbix** for **CentOS/7** :rocket:
 
 ```
 git clone https://github.com/bedrigue02/zabbix.git ~/zabbix
@@ -18,13 +18,15 @@ sudo yum update && \
 sudo yum install ansible
 ```
 
-Install Ansible Galaxy dependencies for MariaDB:
-
+Install Ansible Galaxy dependencies for **MariaDB**:
 ```
 ansible-galaxy collection install community.mysql
 ```
 
-## Install Zabbix
+## Install **Zabbix**
+This playbook will install **Zabbix 5.0 LTS** (**MariaDB** and **Apache**), Server and Agent locally.
+
+
 Run playbook:
 ```
 ansible-playbook -i hosts install_zabbix.yaml
