@@ -24,7 +24,7 @@ ansible-galaxy collection install community.mysql
 ```
 
 ## Install **Zabbix**
-This playbook will install **Zabbix 5.0 LTS** (**MariaDB** and **Apache**), Server and Agent locally.
+This playbook will install **Zabbix 5.0 LTS** (**MariaDB** and **Apache**) Server and Agent locally.
 
 
 Run playbook:
