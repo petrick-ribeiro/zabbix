@@ -111,12 +111,17 @@
 # PHP
 - name: Configure PHP for Zabbix frontend
   block:
-    - name: Edit timezone
+    - name: Uncomment timezone line
+      template:
+        src: '{{ zabbix_php_src_path }}'
+        dest: '{{ zabbix_php_path }}'
+
+    - name: Set timezone
       replace:
         path: '{{ zabbix_php_path }}'
-        after: "php_value[max_input_vars] = 10000"
-        regexp: ";php_value[date.timezone] = Europe/Riga"
-        replace: "php_value[date.timezone] = America/Sao_Paulo"
+        after: "php_value[max_input_vars]"
+        regexp: "Europe/Riga"
+        replace: "{{ local_timezone }}"
   become: true
 
 - name: Post-Installation
