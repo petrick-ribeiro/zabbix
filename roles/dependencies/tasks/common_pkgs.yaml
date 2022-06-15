@@ -3,7 +3,7 @@
   - name: Update
     yum:
       name: "*"
-      # exclude: kernel*
+      exclude: kernel*
       state: latest
 
   - name: Enable EPEL Repo

@@ -91,13 +91,13 @@
     #     command: '{{ import_schema_cmd }}'
     #     responses: 
     #       password: '{{ zabbix_db_pass }}'
+
     - name: Import initial schema and data
       mysql_db:
         name: zabbix
         state: import
         target: '{{ zabbix_schema_path }}'
       ignore_errors: true
-      tags: schema
 
     - name: Configure database for zabbix server
       replace:
