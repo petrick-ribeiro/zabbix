@@ -1,5 +1,9 @@
 # Zabbix
-Ansible Provisioning Zabbix for CentOS/7
+Ansible Provisioning Zabbix for CentOS/7 :rocket:	
+
+```
+git clone https://github.com/bedrigue02/zabbix.git ~/zabbix
+```
 
 ## Prerequisites
 - Disable SElinux
