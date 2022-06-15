@@ -22,6 +22,7 @@ Install Ansible Galaxy dependencies for MariaDB:
 ansible-galaxy collection install community.mysql
 ```
 
+## Install Zabbix
 Run playbook:
 ```
 ansible-playbook -i hosts install_zabbix.yaml
