@@ -13,6 +13,8 @@ git clone https://github.com/bedrigue02/zabbix.git ~/zabbix
 Install Ansible:
 ```
 sudo yum install epel-release
+
+sudo yum update && \
 sudo yum install ansible
 ```
 
