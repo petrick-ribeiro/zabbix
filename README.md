@@ -20,5 +20,5 @@ ansible-galaxy collection install community.mysql
 
 Run playbook:
 ```
-ansible-playbook -i hosts install install_zabbix.yaml
+ansible-playbook -i hosts install_zabbix.yaml
 ```
