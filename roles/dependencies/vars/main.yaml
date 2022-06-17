@@ -32,11 +32,11 @@ import_schema_cmd: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysq
 
 # Paths
 zabbix_repo_path: /etc/yum.repos.d/zabbix.repo
-zabbix_repo_src_path: ~/zabbix/roles/dependencies/templates/zabbix.repo.j2
+zabbix_repo_src_path: ./roles/dependencies/templates/zabbix.repo.j2
 zabbix_schema_path: /usr/share/doc/zabbix-server-mysql-5.0.24/create.sql.gz 
 zabbix_server_path: /etc/zabbix/zabbix_server.conf
 zabbix_php_path: /etc/opt/rh/rh-php72/php-fpm.d/zabbix.conf
-zabbix_php_src_path: ~/zabbix/roles/dependencies/templates/zabbix.conf.j2
+zabbix_php_src_path: ./roles/dependencies/templates/zabbix.conf.j2
 
 # Services
 # zabbix_services: 
