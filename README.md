@@ -2,7 +2,7 @@
 Ansible Provisioning **Zabbix** for **CentOS/7** :rocket:
 
 ```
-git clone https://github.com/bedrigue02/zabbix.git ~/zabbix
+git clone https://github.com/petrick-ribeiro/zabbix.git ~/zabbix
 ```
 
 ## Prerequisites
