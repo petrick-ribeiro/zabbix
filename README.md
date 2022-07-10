@@ -14,7 +14,8 @@ Install Ansible:
 ```
 sudo yum install epel-release
 
-sudo yum update && \
+sudo yum update
+
 sudo yum install ansible
 ```
 
