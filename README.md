@@ -1,5 +1,6 @@
 # Zabbix
-Ansible Provisioning **Zabbix** for **CentOS/7** :rocket:
+Provisioning **Zabbix** in **CentOS/7** with Ansible playbooks :rocket: for development.
+
 
 ```
 git clone https://github.com/petrick-ribeiro/zabbix.git
